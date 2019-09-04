@@ -45,6 +45,71 @@ The models have been removed from the folders, so as to keep it lightweight and 
   * CUDA enabled NVIDIA GPU. Tested on Linux Mint 19.1 with RTX 2070 max-Q design. 
   * Anaconda
 
+### DC-TTS*
+
+  * python == 2.7.16
+  * tensorflow >= 1.3 (will not work on 1.4) 
+  * numpy >= 1.11.1
+  * librosa
+  * tqdm
+  * matplotlib
+  * scipy
+
+### pix2pix
+
+  * python >= 3.5.0
+  * tensorflow-gpu == 1.4.1
+  * numpy == 1.12.0 
+  * protobuf == 3.2.0 
+  * scipy
+
+### face2face
+
+  * python >= 3.5.0
+  * tensorflow >= 1.2
+  * OpenCV 3.0 (tested with 4.0)
+  * Dlib 19.4
+
+
+## Acknowledgments
+
+  * Thanks to [Kyubyong Park](https://github.com/Kyubyong) for his various text-to-speech implementations (tacotron, deepvoice3, dc-tts...) and his work on foreign datasets. His DC-TTS implementation is based on this paper: [Efficiently Trainable Text-to-Speech System Based on Deep Convolutional Networks with Guided Attention](https://arxiv.org/abs/1710.08969).
+  * Thanks to [Christopher Hesse](https://github.com/christopherhesse) for the pix2pix TensorFlow implementation, based on 
+@article{pix2pix2016,
+  title={Image-to-Image Translation with Conditional Adversarial Networks},
+  author={Isola, Phillip and Zhu, Jun-Yan and Zhou, Tinghui and Efros, Alexei A},
+  journal={arxiv},
+  year={2016}
+}
+
+  * Thanks to [Dat Tran](https://github.com/datitran) for the incredibly explainable process and code, that made my debut with Python easier.  
+  * Thanks to [Gene Kogan](http://genekogan.com/) and [Memo Akten](http://www.memo.tv/works/#selected-works) for all the learning ressources on machine learning they make available. 
+  * Thanks to my classmates Raphael Theolade, Ankita Anand, Eirini Kalaitzidi, Harry Morley, Luke Dash, and George Simms for their help and support. Special thanks to Keita Ikeda for sharing his coding wisdom on every occasion. 
+  * Thanks to Dr. Theo Papatheodorou, Dr. Helen Pritchard, Dr. Atau Tanaka, [Dr. Rebecca Fiebrink](https://www.kadenze.com/courses/machine-learning-for-musicians-and-artists/info), and Lior Ben Gai for their inspirational lectures. 
+  * Thanks to Anna Clow, Konstantin Leonenko and Pete Mackenzie for the technical support. 
+The models have been removed from this folder, so as to keep it lightweight and practical. The main effort were put in producing quality dataset by preprocessing videos to provide varied data (scale, position) with neutral background. Some model give better results than others, mostly depending on the amount of variation provided in the training samples. 
+
+
+3.  The [face2face](https://github.com/datitran/face2face-demo) demo by Dat Tran, for reducing & freezing pix2pix models, and running them with dlib's shape predictor.
+    
+    The main modifications I made are on the "run.py" file, that runs dlib's shape predictor on a video source and passes it through reduced-and-frozen pix2pix models trained with Hesse's code. I tailored it to the need of my physical setup (monitors, webcam), removed some of the flags and functions and added a function to slide through different models. I have used the other scripts written by Tran (preprocess data, reduce and freeze models) as provided. The process is made abundantly clear on his repository and I was able to learn a lot from his code. 
+
+    Each of these forks contain updated README files that I wrote according to the particular structure of this multi-headed repository, with step-by-step process. The pix2pix folder is untouched, as it is used remotely from the face2face instructions directly. 
+
+
+## Notes
+
+The models have been removed from the folders, so as to keep it lightweight and practical. 
+- You'll need to download dlib's facial landmark model from [here](http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2), unzip it, and place it in face2face/dlib/
+- You'll also need a--reduced, frozen--pix2pix model to run the webcam application. You can train your own by following the process in face2face/README.md
+- You'll need to train a text-to-speech model, or download a model pretrained on the LJ dataset [here](https://www.dropbox.com/s/1oyipstjxh2n5wo/LJ_logdir.tar?dl=0), place it in dc-tts/logdir, and update the hyperparameters.
+
+
+## Requirements
+
+  * CUDA enabled NVIDIA GPU. Tested on Linux Mint 19.1 with RTX 2070 max-Q design. 
+  * Anaconda
+
 # DC-TTS*
 
   * python == 2.7.16

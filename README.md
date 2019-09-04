@@ -15,11 +15,9 @@ This folder contains forks of three repositories that I have worked with. The ch
 1.  The tensorflow implementation of [DC-TTS](https://github.com/Kyubyong/dc_tts) by Kyubyong Park. 
     It consists of two networks (deep convolutional networks): _text2mel_, that learns how to translate text data into mel spectrograms (MFCC), and _SSRN_ (for Super-resolution Network), that converts mel spectrograms to full STFT (Short-Time Fourier Transform) spectrogram. The few modifications I have made to Park's original code relate to how to perform transfer learning: training a sucessful model with the standard, massive LJ dataset, then continue training using a different, small dataset (Vladimir Putin speaking in english). This requires a lot of back-and-forth, as the successful model very quickly "unlearns" how to "speak english". Tweaking parameters of the neural net (amount of hidden units, ) mel spectrograms, the batch size, curating the parallel (text == wav file) dataset, and testing every epoch/checkpoint are the critical operations. "Cleaning" the training audio files (noise reduction, silence removal...) has been a key factor. I have tested Park's other implementation of Tacotron2 and though it seems more sophisticated, it is harder to work with small dataset and I could only obtain decent results with dc-tts. 
 
-The models have been removed from this folder, so as to keep it lightweight and practical. I left the alignment graphs as a "witness" of the training that took place, in _dc-tts/logdir/LJPutin1.3-1_. The relating dataset was also removed from _dc-tts/data/private/voice/LJPutin-1.3_. Various produced samples are available in _dc-tts/samples_. The source texts used to generate content are visible in _dc-tts/source-texts_
+    The models have been removed from this folder, so as to keep it lightweight and practical. I left the alignment graphs as a "witness" of the training that took place, in _dc-tts/logdir/LJPutin1.3-1_. The relating dataset was also removed from _dc-tts/data/private/voice/LJPutin-1.3_. Various produced samples are available in _dc-tts/samples_. The source texts used to generate content are visible in _dc-tts/source-texts_
 
-You can find a really good model trained on the LJ dataset (one of the 2-3 standard english dataset in computational linguistics) [here](https://www.dropbox.com/s/1oyipstjxh2n5wo/LJ_logdir.tar?dl=0), place it in dc-tts/logdir, and update the hyperparameters. You can also download the [LJ dataset](https://keithito.com/LJ-Speech-Dataset/) and train your own model from it. Or find a model pretrained on the LJ dataset [here](https://www.dropbox.com/s/1oyipstjxh2n5wo/LJ_logdir.tar?dl=0).
-
-
+    You can find a really good model trained on the LJ dataset (one of the 2-3 standard english dataset in computational linguistics) [here](https://www.dropbox.com/s/1oyipstjxh2n5wo/LJ_logdir.tar?dl=0), place it in dc-tts/logdir, and update the hyperparameters. You can also download the [LJ dataset](https://keithito.com/LJ-Speech-Dataset/) and train your own model from it. Or find a model pretrained on the LJ dataset [here](https://www.dropbox.com/s/1oyipstjxh2n5wo/LJ_logdir.tar?dl=0).
 
 2.  The tensorflow implementation of [pix2pix](https://github.com/affinelayer/pix2pix-tensorflow) by Christopher Hesse.
 
@@ -31,7 +29,7 @@ The models have been removed from this folder, so as to keep it lightweight and 
     
     The main modifications I made are on the "run.py" file, that runs dlib's shape predictor on a video source and passes it through reduced-and-frozen pix2pix models trained with Hesse's code. I tailored it to the need of my physical setup (monitors, webcam), removed some of the flags and functions and added a function to slide through different models. I have used the other scripts written by Tran (preprocess data, reduce and freeze models) as provided. The process is made abundantly clear on his repository and I was able to learn a lot from his code. 
 
-Each of these forks contain updated README files that I wrote according to the particular structure of this multi-headed repository, with step-by-step process. The pix2pix folder is untouched, as it is used remotely from the face2face instructions directly. 
+    Each of these forks contain updated README files that I wrote according to the particular structure of this multi-headed repository, with step-by-step process. The pix2pix folder is untouched, as it is used remotely from the face2face instructions directly. 
 
 
 ## Notes
@@ -47,7 +45,7 @@ The models have been removed from the folders, so as to keep it lightweight and 
   * CUDA enabled NVIDIA GPU. Tested on Linux Mint 19.1 with RTX 2070 max-Q design. 
   * Anaconda
 
-    *DC-TTS*
+# DC-TTS*
 
   * python == 2.7.16
   * tensorflow >= 1.3 (will not work on 1.4) 
@@ -57,7 +55,7 @@ The models have been removed from the folders, so as to keep it lightweight and 
   * matplotlib
   * scipy
 
-    *pix2pix*
+# pix2pix
 
   * python >= 3.5.0
   * tensorflow-gpu == 1.4.1
@@ -65,7 +63,7 @@ The models have been removed from the folders, so as to keep it lightweight and 
   * protobuf == 3.2.0 
   * scipy
 
-    *face2face*
+# face2face
 
   * python >= 3.5.0
   * tensorflow >= 1.2
